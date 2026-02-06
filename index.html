@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motor Central - Chat Pro</title>
+    <title>Motor Central - Chat & Perfil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,11 +11,11 @@
     <main id="login-screen" class="screen active">
         <div class="login-card">
             <div class="brand-icon">
-                <svg viewBox="0 0 24 24" width="50" height="50" fill="white">
-                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="white">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                 </svg>
             </div>
-            <h2>Iniciar Sesión</h2>
+            <h2>Bienvenido</h2>
             <form id="login-form">
                 <input type="email" id="email" placeholder="Correo electrónico" required>
                 <input type="password" id="password" placeholder="Contraseña" required>
@@ -27,22 +27,18 @@
     <main id="chat-screen" class="screen">
         <header class="chat-header">
             <div class="user-info">
-                <div class="avatar" id="current-chat-avatar">?</div>
+                <div class="avatar clickable" id="my-profile-trigger">?</div>
                 <div>
-                    <h3 id="display-name">Motor Central</h3>
-                    <small id="chat-status">Selecciona un contacto</small>
+                    <h3 id="display-name">Usuario</h3>
+                    <small id="chat-status">En línea</small>
                 </div>
             </div>
         </header>
 
         <section class="contacts-manager">
             <div class="search-bar">
-                <input type="email" id="contact-email-search" placeholder="Añadir amigo por correo...">
-                <button id="add-contact-btn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
-                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                    </svg>
-                </button>
+                <input type="email" id="contact-email-search" placeholder="Añadir por email...">
+                <button id="add-contact-btn">+</button>
             </div>
             <div id="contacts-list" class="contacts-list">
                 </div>
@@ -50,19 +46,38 @@
 
         <section class="message-area" id="message-area">
             <div class="system-notice">
-                <p>Busca un correo en el motor central para iniciar un chat seguro.</p>
+                <p>Busca un correo para iniciar una conversación segura.</p>
             </div>
         </section>
 
         <footer class="input-area">
-            <input type="text" id="message-input" placeholder="Selecciona un contacto para escribir..." disabled>
-            <button id="send-btn" disabled>
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                </svg>
-            </button>
+            <input type="text" id="message-input" placeholder="Escribe un mensaje..." disabled>
+            <button id="send-btn" disabled>➤</button>
         </footer>
     </main>
+
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-profile">&times;</span>
+            <h2>Editar Perfil</h2>
+            
+            <div class="profile-pic-container">
+                <div id="profile-preview" class="avatar-large">?</div>
+                <input type="file" id="upload-pic" accept="image/*" hidden>
+                <button class="btn-secondary" onclick="document.getElementById('upload-pic').click()">Elegir Foto</button>
+            </div>
+
+            <div class="profile-fields">
+                <label>Nombre de Usuario</label>
+                <input type="text" id="edit-username" placeholder="Tu nombre">
+                
+                <label>Estado</label>
+                <input type="text" id="edit-status" placeholder="¡Hola! Estoy usando Motor Central">
+                
+                <button id="save-profile-btn">GUARDAR CAMBIOS</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
